@@ -37,4 +37,4 @@ def get_fieldnames():
     return ['File_Name', 'Name_Length', 'Size_Data', 'Size_File_Name',
             'Created_Time', 'Modified_Time', 'Access_Time', 'MFT_Time',
             'File_Name_Created_Time', 'File_Name_Modified_Time', 'File_Name_Access_Time', 'File_Name_MFT_Time',
-            'Resident', 'Data_Runs']
+            'Non_Resident', 'Data_Runs']
