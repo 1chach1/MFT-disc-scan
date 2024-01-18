@@ -117,11 +117,11 @@ class FileRecord:
         if file_name:
             info['File_Name'] = file_name.file_name
             info['Name_Length'] = file_name.file_name_length
-            info['Size_File_Name'] = file_name.real_size_filename
-            info['File_Name_Created_Time'] = helpers.get_time(file_name.time_created)
-            info['File_Name_Modified_Time'] = helpers.get_time(file_name.time_modified)
-            info['File_Name_Access_Time'] = helpers.get_time(file_name.time_accessed)
-            info['File_Name_MFT_Time'] = helpers.get_time(file_name.time_mft)
+            info['Size_FN'] = file_name.real_size_filename
+            info['FN_Created_Time'] = helpers.get_time(file_name.time_created)
+            info['FN_Modified_Time'] = helpers.get_time(file_name.time_modified)
+            info['FN_Access_Time'] = helpers.get_time(file_name.time_accessed)
+            info['FN_MFT_Time'] = helpers.get_time(file_name.time_mft)
 
         if standard_info:
             info['Created_Time'] = helpers.get_time(standard_info.time_created)
@@ -133,7 +133,10 @@ class FileRecord:
             info['Size_Data'] = data_attr.real_size_data
             info['Non_Resident'] = data_attr.data_non_res
             if data_attr.data_non_res:
-                info['Data_Runs'] = len(data_attr.dataruns_info)
+                if len(data_attr.dataruns_info):
+                    info['Data_Runs'] = 1
+                else:
+                    info['Data_Runs'] = 0
 
         return info
 
