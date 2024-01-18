@@ -131,6 +131,9 @@ class FileRecord:
 
         if data_attr:
             info['Size_Data'] = data_attr.real_size_data
+            info['Non_Resident'] = data_attr.data_non_res
+            if data_attr.data_non_res:
+                info['Data_Runs'] = len(data_attr.dataruns_info)
 
         return info
 
@@ -180,7 +183,9 @@ class Attr:
             if self.header.non_resident == 0:
                 self.data = data
                 self.real_size_data = struct.unpack('<L', data_orig[16:20])[0]
+                self.data_non_res = 0
             else:
+                self.data_non_res = 1
                 self.dataruns_info = self.header.get_dataruns_info()
                 self.real_size_data = struct.unpack('<Q', data[48:56])[0]
         elif self.header.type == 0x90:
