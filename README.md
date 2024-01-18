@@ -1,4 +1,4 @@
-# MFT-disc-scan
+# MFT-disk-scan
 
 This python script can parse MFT and find deleted records.
 
