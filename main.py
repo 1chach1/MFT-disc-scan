@@ -1,5 +1,6 @@
 import csv
 import io
+import sys
 from argparse import ArgumentParser
 
 import helpers
@@ -9,8 +10,8 @@ input_file_name, output_file_name = None, None
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument('-i', dest='input', default='input')
-    parser.add_argument('-o', dest='output', default='output.csv')
+    parser.add_argument('-i', '--inputfile', dest='input', default='input')
+    parser.add_argument('-o', '--outputfile', dest='output', default='output.csv')
 
     args = parser.parse_args()
 
@@ -19,9 +20,11 @@ if __name__ == "__main__":
         parser = Parser(f, f.read())
     except OSError:
         print("Could not open input file!")
+        sys.exit(1)
 
     if not parser.validate():
         print("No NTFS found!")
+        sys.exit(1)
 
     mft_data = io.BytesIO(parser.get_mft_data())
 
