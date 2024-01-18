@@ -34,7 +34,7 @@ def get_time(windows_time):
 
 
 def get_fieldnames():
-    return ['File_Name', 'Name_Length', 'Size_Data', 'Size_File_Name',
+    return ['File_Name', 'Name_Length', 'Size_Data', 'Size_FN',
             'Created_Time', 'Modified_Time', 'Access_Time', 'MFT_Time',
-            'File_Name_Created_Time', 'File_Name_Modified_Time', 'File_Name_Access_Time', 'File_Name_MFT_Time',
+            'FN_Created_Time', 'FN_Modified_Time', 'FN_Access_Time', 'FN_MFT_Time',
             'Non_Resident', 'Data_Runs']

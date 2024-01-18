@@ -44,10 +44,14 @@ if __name__ == "__main__":
                 removed_files.append(info)
 
     if len(removed_files):
-        with open(args.output, 'w', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, fieldnames=helpers.get_fieldnames(), escapechar='\\')
-            w.writeheader()
-            for file in removed_files:
-                w.writerow(file)
+        try:
+            with open(args.output, 'w', encoding='utf-8', newline='') as f:
+                w = csv.DictWriter(f, fieldnames=helpers.get_fieldnames(), escapechar='\\')
+                w.writeheader()
+                for file in removed_files:
+                    w.writerow(file)
+        except OSError:
+            print("Could not open output file!")
+            sys.exit(1)
 
     f.close()
